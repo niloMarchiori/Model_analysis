@@ -6,7 +6,7 @@ from sub1 import solve_SUB1
 from sub2 import solve_SUB2
 from analisys import plot_sub1, plot_sub2
 
-kappa_i=1E-5
+kappa_i=1E-3
 kappa_f=1E1
 d_kappa=np.linspace(kappa_i, kappa_f, num=1000)
 
@@ -18,7 +18,7 @@ for k in d_kappa:
     sub1['Tcmp'].append(T_cmp)
     sub1['kappa'].append(k)
 
-    Tcom, t = solve_SUB2(ctt.N, kappa=k, s=inp.s, B=ctt.B, N0=ctt.N0, h=inp.h, pmin=inp.pmin, pmax=inp.pmax)
+    Tcom, t = solve_SUB2(ctt.N, kappa=k, s=inp.s, B=inp.B, N0=inp.N0, h=inp.h, pmin=inp.pmin, pmax=inp.pmax)
     sub2['Tcom'].append(Tcom)
     sub2['t'].append(t)
     sub2['kappa'].append(k)

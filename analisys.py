@@ -37,26 +37,25 @@ def plot_sub1(df_sub1):
 
 
 def plot_sub2(df_sub2):
-    plt.figure(figsize=(10, 6))
+    fig,(ax1,ax2)=plt.subplots(1, 2, figsize=(16, 6))
     t_array = np.array(df_sub2['t'].tolist())  # shape: (len(kappa), n_ues)
 
     for i in range(t_array.shape[1]):
-        plt.plot(np.log10(df_sub2['kappa']), t_array[:, i], label=f't[{i}] vs kappa')
-    plt.xlabel('Kappa')
-    plt.ylabel('t')
-    plt.title('t vs Kappa')
-    plt.legend()
-    plt.grid()
-    plt.figure(4, figsize=(10, 6))
+        ax1.plot(np.log10(df_sub2['kappa']), t_array[:, i], label=f't[{i}] vs kappa')
+    ax1.set_xlabel('Kappa')
+    ax1.set_ylabel('t')
+    ax1.set_title('t vs Kappa')
+    ax1.legend()
+    ax1.grid()
     #Plot Tcom x log10(k)
-    plt.plot(np.log10(df_sub2['kappa']), df_sub2['Tcom'], label='T vs Kappa')
-    plt.xlabel('Kappa')
-    plt.ylabel('Tcom')
-    plt.title('Tcom vs Kappa')
-    plt.legend()
-    plt.grid()
+    ax2.plot(np.log10(df_sub2['kappa']), df_sub2['Tcom'], label='T vs Kappa')
+    ax2.set_xlabel('Kappa')
+    ax2.set_ylabel('Tcom')
+    ax2.set_title('Tcom vs Kappa')
+    ax2.legend()
+    ax2.grid()
     # Ajusta o layout para evitar sobreposição de títulos e eixos
     plt.tight_layout()
-
-    # Salva a figura em um arquivo
     plt.savefig('sub_2.png')
+    plt.show()
+    

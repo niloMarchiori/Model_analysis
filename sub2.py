@@ -4,20 +4,21 @@ import numpy as np
 from scipy.special import lambertw
 
 def get_tmax(s,B,h,N0,pmin):
-    return s/(B * np.log2(1 + (pmin * h) / N0))
+    return s/(B * np.log(1 + (pmin * h) / N0))
 
 def get_tmin(s,B,h,pmax,N0):
-    return s/(B * np.log2(1 + (pmax * h) / N0))
+    return s/(B * np.log(1 + (pmax * h) / N0))
 
 def g(kappa,s,B,N0,h):
     num=s/B
     x= ((kappa*h)/N0-1)/np.e
-    W= lambertw(x)
+    W= lambertw(x).real
     return num/(1+ W)
 
 def g_inverse(t,s,B,N0,h):
     y= (s/(B*t))-1
-    k=(N0/h)*(1+(y-1)*np.e**y)
+    # k=(N0/h)*(1+(y-1)*np.e**y)
+    k = (N0/h)*(1 + y*np.exp(y+1))
     return k
 
 def solve_SUB2(N,kappa,s,B,N0,h,pmin,pmax):
