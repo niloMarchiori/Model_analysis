@@ -32,12 +32,25 @@ def solve_SUB2(N,kappa,s,B,N0,h,pmin,pmax):
     
     mask_a= kappa <= price_tmax
     mask_b= (price_tmax < kappa) & (kappa < price_tmin)
-    mas_c= kappa >= price_tmin
+    mask_c= kappa >= price_tmin
 
     t[mask_a]=tmax[mask_a]
     t[mask_b]=g_value[mask_b]
-    t[mas_c]=tmin[mas_c]
+    t[mask_c]=tmin[mask_c]
 
 
     Tcom=np.sum(t)
     return Tcom,t
+
+if __name__ == "__main__":
+    N=ctt.N
+    kappa=ctt.kappa
+    s=inp.s
+    B=inp.B
+    N0=ctt.N0
+    h=inp.h
+    pmin=inp.pmin
+    pmax=inp.pmax
+    Tcom,t=solve_SUB2(N,kappa,s,B,N0,h,pmin,pmax)
+    print("Tcom:",Tcom)
+    print("t:",t)

@@ -55,4 +55,8 @@ def plot_sub2(df_sub2):
     plt.title('Tcom vs Kappa')
     plt.legend()
     plt.grid()
-    plt.show()
+    # Ajusta o layout para evitar sobreposição de títulos e eixos
+    plt.tight_layout()
+
+    # Salva a figura em um arquivo
+    plt.savefig('sub_2.png')

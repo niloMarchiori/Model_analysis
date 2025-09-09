@@ -29,5 +29,5 @@ print(df_sub1)
 print(df_sub2)
 
 #Plot the results
-# plot_sub1(df_sub1)
+plot_sub1(df_sub1)
 plot_sub2(df_sub2)
