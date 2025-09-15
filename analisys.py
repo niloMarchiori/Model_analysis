@@ -47,15 +47,37 @@ def plot_sub2(df_sub2):
     ax1.set_title('t vs Kappa')
     ax1.legend()
     ax1.grid()
-    #Plot Tcom x log10(k)
-    ax2.plot(np.log10(df_sub2['kappa']), df_sub2['Tcom'], label='T vs Kappa')
+   
+    p_array = np.array(df_sub2['p'].tolist())  
+    for i in range(p_array.shape[1]):  
+        ax2.plot(np.log10(df_sub2['kappa']), p_array[:,i], label=f'p_{i}')
     ax2.set_xlabel('Kappa')
-    ax2.set_ylabel('Tcom')
-    ax2.set_title('Tcom vs Kappa')
+    ax2.set_ylabel('p')
+    ax2.set_title('p vs Kappa')
     ax2.legend()
     ax2.grid()
     # Ajusta o layout para evitar sobreposição de títulos e eixos
     plt.tight_layout()
     plt.savefig('sub_2.png')
     plt.show()
-    
+
+def plot_sub3(df_sub3):
+    fig,(ax1,ax2)=plt.subplots(1, 2, figsize=(16, 6))
+    ax1.plot(np.log10(df_sub3['kappa']), df_sub3['theta'], label='theta vs kappa')
+    ax1.plot(np.log10(df_sub3['kappa']), df_sub3['eta'], label='eta vs kappa', color='orange')
+    ax1.set_xlabel('Kappa')
+    ax1.set_ylabel('theta and eta')
+    ax1.set_title('theta vs Kappa')
+    ax1.legend()
+    ax1.grid()
+   
+    ax2.plot(np.log10(df_sub3['theta']), 1/df_sub3['eta'], label='eta vs kappa', color='orange')
+    ax2.set_xlabel('theta')
+    ax2.set_ylabel('eta')
+    ax2.set_title('eta vs theta')
+    ax2.legend()
+    ax2.grid()
+    # Ajusta o layout para evitar sobreposição de títulos e eixos
+    plt.tight_layout()
+    plt.savefig('sub_3.png')
+    plt.show()

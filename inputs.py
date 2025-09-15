@@ -1,7 +1,7 @@
 import constants as ctt
 import numpy as np
 
-np.random.seed(42)
+np.random.seed(60)
 #pos
 d=np.random.uniform(*ctt.d_range,size=ctt.N)
 
@@ -11,6 +11,7 @@ pmin=ctt.p_range[0]*np.ones(ctt.N)
 pmax=ctt.p_range[1]*np.ones(ctt.N)
 h=ctt.g0*(ctt.d0/d)**4
 s=ctt.s*np.ones(ctt.N)*1000  # Convert KB to Bytes
+N0=ctt.N0
 
 N0=ctt.sigma  # Use sigma as N0 in Watts
 g0_linear = 10**(ctt.g0 / 10)  # Convert dB to linear scale

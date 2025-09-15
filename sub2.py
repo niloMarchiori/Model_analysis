@@ -39,9 +39,10 @@ def solve_SUB2(N,kappa,s,B,N0,h,pmin,pmax):
     t[mask_b]=g_value[mask_b]
     t[mask_c]=tmin[mask_c]
 
+    p=N0/h * (np.exp(s/(B*t)) - 1)
 
     Tcom=np.sum(t)
-    return Tcom,t
+    return Tcom,t,p
 
 if __name__ == "__main__":
     N=ctt.N
